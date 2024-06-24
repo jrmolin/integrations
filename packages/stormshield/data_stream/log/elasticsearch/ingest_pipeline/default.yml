@@ -104,6 +104,11 @@ processors:
   #########################################################
   # Now rename things to ECS
 
+  - rename:
+      field: stormshield.startime
+      target_field: event.start
+      ignore_missing: true
+
   - set:
       field: observer.name
       copy_from: stormshield.fw
@@ -474,6 +479,29 @@ processors:
       value: "{{{user.name}}}"
       if: ctx.user?.name != null
       allow_duplicates: false
+
+  # ------------------------------------------------------------
+  # Add the 'observer' fields
+
+  - rename:
+      target_field: observer.egress.interface.name
+      field: stormshield.dstif
+      ignore_missing: true
+
+  - rename:
+      target_field: observer.egress.interface.alias
+      field: stormshield.dstifname
+      ignore_missing: true
+
+  - rename:
+      target_field: observer.ingress.interface.name
+      field: stormshield.srcif
+      ignore_missing: true
+
+  - rename:
+      target_field: observer.ingress.interface.alias
+      field: stormshield.srcifname
+      ignore_missing: true
 
   # ------------------------------------------------------------
   # Cleanup

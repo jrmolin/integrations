@@ -158,6 +158,12 @@
                 "type": "ipv4"
             },
             "observer": {
+                "egress": {
+                    "interface": {
+                        "alias": "out",
+                        "name": "Ethernet0"
+                    }
+                },
                 "name": "stormy-1",
                 "type": "firewall",
                 "vendor": "Stormshield"
@@ -178,8 +184,6 @@
                 "port": 123
             },
             "stormshield": {
-                "dstif": "Ethernet0",
-                "dstifname": "out",
                 "fw": "stormy-1",
                 "logtype": "connection",
                 "metadata": {
@@ -455,6 +459,12 @@
                 "type": "ipv4"
             },
             "observer": {
+                "ingress": {
+                    "interface": {
+                        "alias": "out",
+                        "name": "Ethernet0"
+                    }
+                },
                 "name": "SN310A17B0323A7",
                 "type": "firewall",
                 "vendor": "Stormshield"
@@ -489,8 +499,6 @@
                     "srcname": "user1",
                     "srcportname": "ephemeral_fw_udp"
                 },
-                "srcif": "Ethernet0",
-                "srcifname": "out",
                 "startime": "2019-02-24 16:38:00",
                 "time": "2019-02-24 16:38:01",
                 "tz": "+0100"
@@ -604,6 +612,12 @@
                 "type": "ipv4"
             },
             "observer": {
+                "ingress": {
+                    "interface": {
+                        "alias": "out",
+                        "name": "Ethernet0"
+                    }
+                },
                 "name": "stormy-1",
                 "type": "firewall",
                 "vendor": "Stormshield"
@@ -637,8 +651,6 @@
                     "srcportname": "ad2008-dyn_tcp",
                     "version": "TLSv1.3"
                 },
-                "srcif": "Ethernet0",
-                "srcifname": "out",
                 "startime": "2024-03-08 10:14:08",
                 "time": "2024-03-08 10:14:08",
                 "tz": "+0000"
@@ -752,6 +764,12 @@
                 "type": "ipv4"
             },
             "observer": {
+                "ingress": {
+                    "interface": {
+                        "alias": "out",
+                        "name": "Ethernet0"
+                    }
+                },
                 "name": "stormy-1",
                 "type": "firewall",
                 "vendor": "Stormshield"
@@ -785,8 +803,6 @@
                     "srcportname": "ad2008-dyn_tcp",
                     "version": "TLSv1.3"
                 },
-                "srcif": "Ethernet0",
-                "srcifname": "out",
                 "startime": "2024-03-08 10:14:08",
                 "time": "2024-03-08 10:14:08",
                 "tz": "+0000"
@@ -818,6 +834,12 @@
                 "type": "ipv4"
             },
             "observer": {
+                "ingress": {
+                    "interface": {
+                        "alias": "out",
+                        "name": "Ethernet0"
+                    }
+                },
                 "name": "stormy-1",
                 "type": "firewall",
                 "vendor": "Stormshield"
@@ -851,8 +873,6 @@
                     "srcportname": "ad2008-dyn_tcp",
                     "version": "TLSv1.3"
                 },
-                "srcif": "Ethernet0",
-                "srcifname": "out",
                 "startime": "2024-03-08 10:14:08",
                 "time": "2024-03-08 10:14:08",
                 "tz": "+0000"
@@ -883,6 +903,12 @@
                 "type": "ipv4"
             },
             "observer": {
+                "egress": {
+                    "interface": {
+                        "alias": "in",
+                        "name": "Ethernet1"
+                    }
+                },
                 "name": "stormy-1",
                 "type": "firewall",
                 "vendor": "Stormshield"
@@ -902,8 +928,6 @@
                 "port": 68
             },
             "stormshield": {
-                "dstif": "Ethernet1",
-                "dstifname": "in",
                 "fw": "stormy-1",
                 "logtype": "connection",
                 "metadata": {
@@ -1476,6 +1500,12 @@
                 "type": "ipv4"
             },
             "observer": {
+                "egress": {
+                    "interface": {
+                        "alias": "out",
+                        "name": "Ethernet0"
+                    }
+                },
                 "name": "stormy-1",
                 "type": "firewall",
                 "vendor": "Stormshield"
@@ -1495,8 +1525,6 @@
                 "port": 19883
             },
             "stormshield": {
-                "dstif": "Ethernet0",
-                "dstifname": "out",
                 "fw": "stormy-1",
                 "logtype": "connection",
                 "metadata": {
@@ -1544,6 +1572,12 @@
                 "type": "ipv4"
             },
             "observer": {
+                "egress": {
+                    "interface": {
+                        "alias": "out",
+                        "name": "Ethernet0"
+                    }
+                },
                 "name": "stormy-1",
                 "type": "firewall",
                 "vendor": "Stormshield"
@@ -1563,8 +1597,6 @@
                 "port": 15908
             },
             "stormshield": {
-                "dstif": "Ethernet0",
-                "dstifname": "out",
                 "fw": "stormy-1",
                 "logtype": "connection",
                 "metadata": {
@@ -1651,6 +1683,18 @@
                 "type": "ipv4"
             },
             "observer": {
+                "egress": {
+                    "interface": {
+                        "alias": "out",
+                        "name": "Ethernet0"
+                    }
+                },
+                "ingress": {
+                    "interface": {
+                        "alias": "segment0",
+                        "name": "Ethernet1"
+                    }
+                },
                 "name": "stormy-1",
                 "type": "firewall",
                 "vendor": "Stormshield"
@@ -1694,8 +1738,6 @@
                 "port": 55008
             },
             "stormshield": {
-                "dstif": "Ethernet0",
-                "dstifname": "out",
                 "fw": "stormy-1",
                 "logtype": "plugin",
                 "metadata": {
@@ -1715,8 +1757,6 @@
                     "srcname": "vm-internal",
                     "srcportname": "ephemeral_fw_tcp"
                 },
-                "srcif": "Ethernet1",
-                "srcifname": "segment0",
                 "startime": "2024-06-07 10:40:42",
                 "time": "2024-06-07 18:46:18",
                 "tz": "+0000"

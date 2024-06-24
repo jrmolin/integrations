@@ -89,6 +89,14 @@
 - external: ecs
   name: observer.vendor
 - external: ecs
+  name: observer.egress.interface.name
+- external: ecs
+  name: observer.egress.interface.alias
+- external: ecs
+  name: observer.ingress.interface.name
+- external: ecs
+  name: observer.ingress.interface.alias
+- external: ecs
   name: network.protocol
 - external: ecs
   name: network.transport
