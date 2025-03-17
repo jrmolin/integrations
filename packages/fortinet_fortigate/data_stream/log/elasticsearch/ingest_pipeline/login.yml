@@ -8,6 +8,7 @@ processors:
     field: "event.action"
     value: "login"
     override: false
+    if: ctx.event?.action == null
 - append:
     field: "event.category"
     value:

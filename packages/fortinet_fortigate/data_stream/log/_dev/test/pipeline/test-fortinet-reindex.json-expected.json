@@ -1,0 +1,659 @@
+{
+    "expected": [
+        {
+            "@timestamp": "2025-03-06T06:05:00.000Z",
+            "destination": {
+                "ip": "192.168.1.25",
+                "port": 443
+            },
+            "ecs": {
+                "version": "8.17.0"
+            },
+            "event": {
+                "category": [
+                    "network"
+                ],
+                "code": "1059028704",
+                "kind": "event",
+                "original": "<190>date=2025-03-06 time=06:05:00 devname=\"input-FGT-A\" devid=\"FGVMSLTM12345670\" eventtime=1741197900566054023 logid=\"1059028704\" type=\"utm\" subtype=\"app-ctrl\" eventtype=\"signature\" level=\"information\" vd=\"root\" appid=40568 srcip=10.0.6.2 srccountry=\"Reserved\" dstip=192.168.1.25 dstcountry=\"United States\" srcport=57230 dstport=443 srcintf=\"port2\" srcintfrole=\"lan\" dstintf=\"port1\" dstintfrole=\"wan\" proto=6 service=\"SSL\" direction=\"incoming\" policyid=5 poluuid=\"12345678-9abc-def0-fedc-ba9876543210\" policytype=\"policy\" sessionid=98765432 applist=\"DPS-Default\" action=\"pass\" appcat=\"Web.Client\" app=\"HTTPS.BROWSER\" hostname=\"skynet-1.dark-cloud.com\" incidentserialno=123456789 url=\"/\" msg=\"Web.Client: HTTPS.BROWSER\" apprisk=\"medium\" scertcname=\"*.dark-cloud.com\" scertissuer=\"R10\"",
+                "outcome": "success",
+                "start": "2025-03-05T18:05:00.566Z",
+                "type": [
+                    "allowed"
+                ]
+            },
+            "fortinet": {
+                "firewall": {
+                    "action": "pass",
+                    "appid": "40568",
+                    "apprisk": "medium",
+                    "dstcountry": "United States",
+                    "dstintfrole": "wan",
+                    "incidentserialno": "123456789",
+                    "policytype": "policy",
+                    "poluuid": "12345678-9abc-def0-fedc-ba9876543210",
+                    "sessionid": "98765432",
+                    "srccountry": "Reserved",
+                    "srcintfrole": "lan",
+                    "subtype": "app-ctrl",
+                    "type": "utm",
+                    "vd": "root"
+                }
+            },
+            "log": {
+                "level": "information",
+                "syslog": {
+                    "facility": {
+                        "code": 23
+                    },
+                    "priority": 190,
+                    "severity": {
+                        "code": 6
+                    }
+                }
+            },
+            "message": "Web.Client: HTTPS.BROWSER",
+            "network": {
+                "application": "HTTPS.BROWSER",
+                "direction": "internal",
+                "iana_number": "6",
+                "protocol": "ssl",
+                "transport": "tcp"
+            },
+            "observer": {
+                "egress": {
+                    "interface": {
+                        "name": "port1"
+                    }
+                },
+                "ingress": {
+                    "interface": {
+                        "name": "port2"
+                    }
+                },
+                "name": "input-FGT-A",
+                "product": "Fortigate",
+                "serial_number": "FGVMSLTM12345670",
+                "type": "firewall",
+                "vendor": "Fortinet"
+            },
+            "related": {
+                "ip": [
+                    "10.0.6.2",
+                    "192.168.1.25"
+                ]
+            },
+            "rule": {
+                "category": "Web-Client",
+                "id": "5",
+                "ruleset": "DPS-Default"
+            },
+            "source": {
+                "ip": "10.0.6.2",
+                "port": 57230
+            },
+            "tags": [
+                "preserve_original_event"
+            ],
+            "tls": {
+                "server": {
+                    "issuer": "R10",
+                    "x509": {
+                        "issuer": {
+                            "common_name": [
+                                "R10"
+                            ]
+                        },
+                        "subject": {
+                            "common_name": [
+                                "*.dark-cloud.com"
+                            ]
+                        }
+                    }
+                }
+            },
+            "url": {
+                "domain": "skynet-1.dark-cloud.com",
+                "path": "/"
+            }
+        },
+        {
+            "@timestamp": "2025-03-06T06:38:10.000Z",
+            "destination": {
+                "bytes": 6358,
+                "ip": "192.168.2.3",
+                "packets": 13,
+                "port": 443
+            },
+            "ecs": {
+                "version": "8.17.0"
+            },
+            "event": {
+                "action": "client-rst",
+                "category": [
+                    "network"
+                ],
+                "code": "0000000013",
+                "duration": 21000000000,
+                "kind": "event",
+                "original": "<189>date=2025-03-06 time=06:38:10 devname=\"input-FGT-A\" devid=\"FGVMSLTM23456789\" eventtime=1741199890640030423 logid=\"0000000013\" type=\"traffic\" subtype=\"forward\" level=\"notice\" vd=\"root\" srcip=10.3.4.5 srcport=60711 srcintf=\"port2\" srcintfrole=\"lan\" dstip=192.168.2.3 dstport=443 dstintf=\"port1\" dstintfrole=\"wan\" srccountry=\"Reserved\" dstcountry=\"United States\" sessionid=56789875 proto=6 action=\"client-rst\" policyid=5 policytype=\"policy\" poluuid=\"98765432-12fe-dcba-9876-543210123456\" policyname=\"A-Allow Outbound HTTP(S)\" service=\"HTTPS\" trandisp=\"snat\" transip=10.1.2.3 transport=60711 appid=40568 app=\"HTTPS.BROWSER\" appcat=\"Web.Client\" apprisk=\"medium\" applist=\"DPS-Default\" duration=21 sentbyte=3430 rcvdbyte=6358 sentpkt=12 rcvdpkt=13 utmaction=\"allow\" countapp=2",
+                "outcome": "success",
+                "start": "2025-03-05T18:38:10.640Z",
+                "type": [
+                    "connection",
+                    "end",
+                    "protocol"
+                ]
+            },
+            "fortinet": {
+                "firewall": {
+                    "action": "client-rst",
+                    "appid": "40568",
+                    "applist": "DPS-Default",
+                    "apprisk": "medium",
+                    "countapp": "2",
+                    "dstcountry": "United States",
+                    "dstintfrole": "wan",
+                    "sessionid": "56789875",
+                    "srccountry": "Reserved",
+                    "srcintfrole": "lan",
+                    "subtype": "forward",
+                    "trandisp": "snat",
+                    "transip": "10.1.2.3",
+                    "type": "traffic",
+                    "utmaction": "allow",
+                    "vd": "root"
+                }
+            },
+            "log": {
+                "level": "notice",
+                "syslog": {
+                    "facility": {
+                        "code": 23
+                    },
+                    "priority": 189,
+                    "severity": {
+                        "code": 5
+                    }
+                }
+            },
+            "network": {
+                "application": "HTTPS.BROWSER",
+                "bytes": 9788,
+                "direction": "internal",
+                "iana_number": "6",
+                "packets": 25,
+                "protocol": "https",
+                "transport": "tcp"
+            },
+            "observer": {
+                "egress": {
+                    "interface": {
+                        "name": "port1"
+                    }
+                },
+                "ingress": {
+                    "interface": {
+                        "name": "port2"
+                    }
+                },
+                "name": "input-FGT-A",
+                "product": "Fortigate",
+                "serial_number": "FGVMSLTM23456789",
+                "type": "firewall",
+                "vendor": "Fortinet"
+            },
+            "related": {
+                "ip": [
+                    "10.3.4.5",
+                    "192.168.2.3",
+                    "10.1.2.3"
+                ]
+            },
+            "rule": {
+                "category": "Web-Client",
+                "id": "5",
+                "name": "A-Allow Outbound HTTP(S)",
+                "ruleset": "policy",
+                "uuid": "98765432-12fe-dcba-9876-543210123456"
+            },
+            "source": {
+                "bytes": 3430,
+                "ip": "10.3.4.5",
+                "nat": {
+                    "ip": "10.1.2.3",
+                    "port": 60711
+                },
+                "packets": 12,
+                "port": 60711
+            },
+            "tags": [
+                "preserve_original_event"
+            ]
+        },
+        {
+            "@timestamp": "2025-03-06T06:59:53.000Z",
+            "destination": {
+                "ip": "10.1.2.3"
+            },
+            "ecs": {
+                "version": "8.17.0"
+            },
+            "event": {
+                "action": "login",
+                "category": [
+                    "authentication"
+                ],
+                "code": "0100032002",
+                "kind": "event",
+                "original": "<185>date=2025-03-06 time=06:59:53 devname=\"input-FGT-A\" devid=\"FGVMSLTM34567890\" eventtime=1741201193891860190 logid=\"0100032002\" type=\"event\" subtype=\"system\" level=\"alert\" vd=\"root\" logdesc=\"Admin login failed\" sn=\"0\" user=\"the_plague\" ui=\"https(192.168.99.32)\" method=\"https\" srcip=192.168.99.32 dstip=10.1.2.3 action=\"login\" status=\"failed\" reason=\"name_invalid\" msg=\"Administrator the_plague login failed from https(192.168.99.32) because of invalid user name\"",
+                "outcome": "failure",
+                "reason": "name_invalid",
+                "start": "2025-03-05T18:59:53.891Z"
+            },
+            "fortinet": {
+                "firewall": {
+                    "action": "login",
+                    "method": "https",
+                    "sn": "0",
+                    "subtype": "system",
+                    "type": "event",
+                    "vd": "root"
+                }
+            },
+            "log": {
+                "level": "alert",
+                "syslog": {
+                    "facility": {
+                        "code": 23
+                    },
+                    "priority": 185,
+                    "severity": {
+                        "code": 1
+                    }
+                }
+            },
+            "message": "Administrator the_plague login failed from https(192.168.99.32) because of invalid user name",
+            "network": {
+                "direction": "internal"
+            },
+            "observer": {
+                "name": "input-FGT-A",
+                "product": "Fortigate",
+                "serial_number": "FGVMSLTM34567890",
+                "type": "firewall",
+                "vendor": "Fortinet"
+            },
+            "related": {
+                "ip": [
+                    "192.168.99.32",
+                    "10.1.2.3"
+                ],
+                "user": [
+                    "the_plague"
+                ]
+            },
+            "rule": {
+                "description": "Admin login failed"
+            },
+            "source": {
+                "ip": "192.168.99.32",
+                "user": {
+                    "name": "the_plague",
+                    "roles": [
+                        "Administrator"
+                    ]
+                }
+            },
+            "tags": [
+                "preserve_original_event"
+            ],
+            "user": {
+                "name": "the_plague",
+                "roles": [
+                    "Administrator"
+                ]
+            }
+        },
+        {
+            "@timestamp": "2020-04-23T12:17:48.000-05:00",
+            "destination": {
+                "as": {
+                    "number": 35908
+                },
+                "bytes": 1130,
+                "ip": "10.3.4.5",
+                "port": 443
+            },
+            "ecs": {
+                "version": "8.17.0"
+            },
+            "event": {
+                "action": "ftgd_blk",
+                "category": [
+                    "network"
+                ],
+                "code": "0316013056",
+                "kind": "event",
+                "original": "<188>date=2020-04-23 time=12:17:48 devname=\"testswitch1\" devid=\"somerouterid\" logid=\"0316013056\" type=\"utm\" subtype=\"webfilter\" eventtype=\"ftgd_blk\" level=\"warning\" vd=\"root\" eventtime=1587230269052907555 tz=\"-0500\" policyid=100602 sessionid=1234 user=\"elasticuser\" group=\"elasticgroup\" authserver=\"elasticauth\" srcip=192.168.2.1 srcport=61930 srcintf=\"port1\" srcintfrole=\"lan\" dstip=10.3.4.5 dstport=443 dstintf=\"wan1\" dstintfrole=\"wan\" proto=6 service=\"HTTPS\" hostname=\"elastic.co\" profile=\"elasticruleset\" action=\"blocked\" reqtype=\"direct\" url=\"/config/\" sentbyte=1152 rcvdbyte=1130 direction=\"outgoing\" msg=\"URL belongs to a denied category in policy\" method=\"domain\" cat=76 catdesc=\"Internet Telephony\"",
+                "outcome": "success",
+                "start": "2020-04-18T12:17:49.052-05:00",
+                "timezone": "-0500",
+                "type": [
+                    "denied"
+                ]
+            },
+            "fortinet": {
+                "firewall": {
+                    "action": "blocked",
+                    "authserver": "elasticauth",
+                    "cat": "76",
+                    "dstintfrole": "wan",
+                    "method": "domain",
+                    "profile": "elasticruleset",
+                    "reqtype": "direct",
+                    "sessionid": "1234",
+                    "srcintfrole": "lan",
+                    "subtype": "webfilter",
+                    "type": "utm",
+                    "vd": "root"
+                }
+            },
+            "log": {
+                "level": "warning",
+                "syslog": {
+                    "facility": {
+                        "code": 23
+                    },
+                    "priority": 188,
+                    "severity": {
+                        "code": 4
+                    }
+                }
+            },
+            "message": "URL belongs to a denied category in policy",
+            "network": {
+                "bytes": 2282,
+                "direction": "outbound",
+                "iana_number": "6",
+                "protocol": "https",
+                "transport": "tcp"
+            },
+            "observer": {
+                "egress": {
+                    "interface": {
+                        "name": "wan1"
+                    }
+                },
+                "ingress": {
+                    "interface": {
+                        "name": "port1"
+                    }
+                },
+                "name": "testswitch1",
+                "product": "Fortigate",
+                "serial_number": "somerouterid",
+                "type": "firewall",
+                "vendor": "Fortinet"
+            },
+            "related": {
+                "ip": [
+                    "192.168.2.1",
+                    "10.3.4.5"
+                ],
+                "user": [
+                    "elasticuser"
+                ]
+            },
+            "rule": {
+                "category": "Internet Telephony",
+                "id": "100602",
+                "ruleset": "elasticruleset"
+            },
+            "source": {
+                "bytes": 1152,
+                "ip": "192.168.2.1",
+                "port": 61930,
+                "user": {
+                    "group": {
+                        "name": "elasticgroup"
+                    },
+                    "name": "elasticuser"
+                }
+            },
+            "tags": [
+                "preserve_original_event"
+            ],
+            "url": {
+                "domain": "elastic.co",
+                "path": "/config/"
+            },
+            "user": {
+                "name": "elasticuser"
+            }
+        },
+        {
+            "@timestamp": "2024-03-15T22:12:57.000-07:00",
+            "destination": {
+                "bytes": 1140,
+                "ip": "172.16.200.99",
+                "packets": 15,
+                "port": 123
+            },
+            "ecs": {
+                "version": "8.17.0"
+            },
+            "event": {
+                "action": "accept",
+                "category": [
+                    "network",
+                    "network"
+                ],
+                "code": "0000000013",
+                "duration": 294000000000,
+                "kind": "event",
+                "original": "date=2024-03-15 time=22:12:57 devname=\"foo\" devid=\"bar\" eventtime=1710565976971231921 tz=\"-0700\" logid=\"0000000013\" type=\"traffic\" subtype=\"forward\" level=\"notice\" vd=\"root\" srcip=10.1.100.66 srcport=123 srcintf=\"srv1\" srcintfrole=\"lan\" dstip=172.16.200.99 dstport=123 dstintf=\"port13\" dstintfrole=\"wan\" srccountry=\"Reserved\" dstcountry=\"United States\" sessionid=40433307 proto=17 action=\"accept\" policyid=26 policytype=\"policy\" poluuid=\"aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa\" policyname=\"pol1\" service=\"NTP\" trandisp=\"snat\" transip=10.1.100.11 transport=60540 duration=294 sentbyte=1140 rcvdbyte=1140 sentpkt=15 rcvdpkt=15 appcat=\"unscanned\" srchwvendor=\"Baz\" devtype=\"Router\" mastersrcmac=\"ff:f0:ff:ff:2e:07\" srcmac=\"ff:ff:ff:1b:ff:07\" srcserver=0 \u0004��\u0000 \u0000D\f<\u0000\u0000\u0000$\u0000\u0000\u0000\u0015e��\u0001\u0000\u0000\u0000=���\u0001\u0000\u0000\u0000��������",
+                "outcome": "success",
+                "start": "2024-03-15T22:12:56.971-07:00",
+                "timezone": "-0700",
+                "type": [
+                    "connection",
+                    "end",
+                    "allowed",
+                    "connection",
+                    "end",
+                    "allowed"
+                ]
+            },
+            "fortinet": {
+                "firewall": {
+                    "action": "accept",
+                    "devtype": "Router",
+                    "dstcountry": "United States",
+                    "dstintfrole": "wan",
+                    "mastersrcmac": "ff:f0:ff:ff:2e:07",
+                    "sessionid": "40433307",
+                    "srccountry": "Reserved",
+                    "srchwvendor": "Baz",
+                    "srcintfrole": "lan",
+                    "srcserver": "0",
+                    "subtype": "forward",
+                    "trandisp": "snat",
+                    "transip": "10.1.100.11",
+                    "type": "traffic",
+                    "vd": "root"
+                }
+            },
+            "log": {
+                "level": "notice"
+            },
+            "network": {
+                "bytes": 2280,
+                "direction": "internal",
+                "iana_number": "17",
+                "packets": 30,
+                "protocol": "ntp",
+                "transport": "udp"
+            },
+            "observer": {
+                "egress": {
+                    "interface": {
+                        "name": "port13"
+                    }
+                },
+                "ingress": {
+                    "interface": {
+                        "name": "srv1"
+                    }
+                },
+                "name": "foo",
+                "product": "Fortigate",
+                "serial_number": "bar",
+                "type": "firewall",
+                "vendor": "Fortinet"
+            },
+            "related": {
+                "ip": [
+                    "10.1.100.66",
+                    "172.16.200.99",
+                    "10.1.100.11"
+                ]
+            },
+            "rule": {
+                "category": "unscanned",
+                "id": "26",
+                "name": "pol1",
+                "ruleset": "policy",
+                "uuid": "aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa"
+            },
+            "source": {
+                "bytes": 1140,
+                "ip": "10.1.100.66",
+                "mac": "FF-FF-FF-1B-FF-07",
+                "nat": {
+                    "ip": "10.1.100.11",
+                    "port": 60540
+                },
+                "packets": 15,
+                "port": 123
+            },
+            "tags": [
+                "preserve_original_event"
+            ]
+        },
+        {
+            "@timestamp": "2020-04-23T12:17:48.000-05:00",
+            "destination": {
+                "bytes": 1130,
+                "ip": "10.4.5.13",
+                "port": 443
+            },
+            "ecs": {
+                "version": "8.17.0"
+            },
+            "event": {
+                "action": "ftgd_blk",
+                "category": [
+                    "network"
+                ],
+                "code": "0316013056",
+                "kind": "event",
+                "original": "<188>date=2020-04-23 time=12:17:48 devname=\"testswitch1\" devid=\"somerouterid\" logid=\"0316013056\" type=\"utm\" subtype=\"webfilter\" eventtype=\"ftgd_blk\" level=\"warning\" vd=\"root\" eventtime=1587230269052907555 tz=\"-0500\" policyid=100602 sessionid=1234 user=\"elasticuser\" group=\"elasticgroup\" authserver=\"elasticauth\" srcip=192.168.2.1 srcport=61930 srcintf=\"port1\" srcintfrole=\"lan\" dstip=10.4.5.13 dstport=443 dstintf=\"wan1\" dstintfrole=\"wan\" proto=6 service=\"HTTPS\" hostname=\"elastic.co\" profile=\"elasticruleset\" action=\"blocked\" reqtype=\"direct\" url=\"/config/\" sentbyte=1152 rcvdbyte=1130 direction=\"outgoing\" msg=\"URL belongs to a denied category in policy\" method=\"domain\" cat=76 catdesc=\"Internet Telephony\"",
+                "outcome": "success",
+                "start": "2020-04-18T12:17:49.052-05:00",
+                "timezone": "-0500",
+                "type": [
+                    "denied"
+                ]
+            },
+            "fortinet": {
+                "firewall": {
+                    "action": "blocked",
+                    "authserver": "elasticauth",
+                    "cat": "76",
+                    "dstintfrole": "wan",
+                    "method": "domain",
+                    "profile": "elasticruleset",
+                    "reqtype": "direct",
+                    "sessionid": "1234",
+                    "srcintfrole": "lan",
+                    "subtype": "webfilter",
+                    "type": "utm",
+                    "vd": "root"
+                }
+            },
+            "log": {
+                "level": "warning",
+                "syslog": {
+                    "facility": {
+                        "code": 23
+                    },
+                    "priority": 188,
+                    "severity": {
+                        "code": 4
+                    }
+                }
+            },
+            "message": "URL belongs to a denied category in policy",
+            "network": {
+                "bytes": 2282,
+                "direction": "outbound",
+                "iana_number": "6",
+                "protocol": "https",
+                "transport": "tcp"
+            },
+            "observer": {
+                "egress": {
+                    "interface": {
+                        "name": "wan1"
+                    }
+                },
+                "ingress": {
+                    "interface": {
+                        "name": "port1"
+                    }
+                },
+                "name": "testswitch1",
+                "product": "Fortigate",
+                "serial_number": "somerouterid",
+                "type": "firewall",
+                "vendor": "Fortinet"
+            },
+            "related": {
+                "ip": [
+                    "192.168.2.1",
+                    "10.4.5.13"
+                ],
+                "user": [
+                    "elasticuser"
+                ]
+            },
+            "rule": {
+                "category": "Internet Telephony",
+                "id": "100602",
+                "ruleset": "elasticruleset"
+            },
+            "source": {
+                "bytes": 1152,
+                "ip": "192.168.2.1",
+                "port": 61930,
+                "user": {
+                    "group": {
+                        "name": "elasticgroup"
+                    },
+                    "name": "elasticuser"
+                }
+            },
+            "tags": [
+                "preserve_original_event"
+            ],
+            "url": {
+                "domain": "elastic.co",
+                "path": "/config/"
+            },
+            "user": {
+                "name": "elasticuser"
+            }
+        }
+    ]
+}

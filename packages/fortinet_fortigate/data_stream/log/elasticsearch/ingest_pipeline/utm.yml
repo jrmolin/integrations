@@ -7,7 +7,7 @@ processors:
   - append:
       field: event.type
       value: denied
-      if: "['block', 'blocked'].contains(ctx.fortinet?.firewall?.action)"
+      if: "['block', 'blocked'].contains(ctx.fortinet?.firewall?.action) && (ctx.event.type == null || !ctx.event.type.contains('denied'))"
   - append:
       field: event.type
       value: info
@@ -15,7 +15,7 @@ processors:
   - append:
       field: event.type
       value: allowed
-      if: "['pass', 'passthrough'].contains(ctx.fortinet?.firewall?.action)"
+      if: "['pass', 'passthrough'].contains(ctx.fortinet?.firewall?.action) && (ctx.event.type == null || !ctx.event.type.contains('allowed'))"
   - set:
       field: event.outcome
       value: success
@@ -23,10 +23,12 @@ processors:
   - append:
       field: event.category
       value: network
+      if: ctx.event?.category == null || !ctx.event.category.contains('network')
   - rename:
       field: fortinet.firewall.dstip
       target_field: destination.ip
       ignore_missing: true
+      override: true
   - rename:
       field: fortinet.firewall.remip
       target_field: destination.ip
@@ -62,6 +64,7 @@ processors:
       field: fortinet.firewall.recipient
       target_field: email.to.address
       ignore_missing: true
+      override: true
   - append:
       field: email.to.address
       value: "{{{fortinet.firewall.recipient}}}"
@@ -70,10 +73,12 @@ processors:
       field: fortinet.firewall.group
       target_field: source.user.group.name
       ignore_missing: true
+      override: true
   - rename:
       field: fortinet.firewall.locip
       target_field: source.ip
       ignore_missing: true
+      override: true
   - convert:
       field: fortinet.firewall.locport
       target_field: source.port
@@ -104,6 +109,7 @@ processors:
       field: fortinet.firewall.srcdomain
       target_field: source.domain
       ignore_missing: true
+      if: ctx.source?.domain == null
   - rename:
       field: fortinet.firewall.srcip
       target_field: source.ip
@@ -112,19 +118,23 @@ processors:
   - rename:
       field: fortinet.firewall.httpmethod
       target_field: http.request.method
+      if: ctx.http?.request?.method == null
       ignore_missing: true
   - rename:
       field: fortinet.firewall.referralurl
       target_field: http.request.referrer
+      if: ctx.http?.request?.referrer == null
       ignore_missing: true
   - rename:
       field: fortinet.firewall.srcmac
       target_field: source.mac
+      if: ctx.source?.mac == null
       ignore_missing: true
   - rename:
       field: fortinet.firewall.unauthuser
       target_field: source.user.name
       ignore_missing: true
+      override: true
   - rename:
       field: fortinet.firewall.user
       target_field: source.user.name
@@ -159,6 +169,9 @@ processors:
       target_field: rule.category
       ignore_missing: true
       if: ctx.rule?.category == null
+  - remove:
+      field: fortinet.firewall.catdesc
+      ignore_missing: true
   - gsub:
       field: rule.category
       pattern: "\\."
@@ -233,6 +246,7 @@ processors:
       field: fortinet.firewall.level
       target_field: log.level
       ignore_missing: true
+      override: true
   - rename:
       field: fortinet.firewall.logid
       target_field: event.code
@@ -261,6 +275,7 @@ processors:
       field: fortinet.firewall.proto
       target_field: network.iana_number
       ignore_missing: true
+      override: true
   - rename:
       field: fortinet.firewall.qclass
       target_field: dns.question.class
@@ -277,6 +292,7 @@ processors:
       field: fortinet.firewall.service
       target_field: network.protocol
       ignore_missing: true
+      override: true
   - lowercase:
       field: network.protocol
       ignore_missing: true
@@ -469,6 +485,11 @@ processors:
       field:
         - fortinet.firewall.cn
         - fortinet.firewall.san
+        - fortinet.firewall.catdesc
+        - fortinet.firewall.logid
+        - fortinet.firewall.direction
+        - fortinet.firewall.dstintf
+        - fortinet.firewall.eventtype
         - fortinet.firewall.dst_port
         - fortinet.firewall.remport
         - fortinet.firewall.dstport
@@ -481,6 +502,10 @@ processors:
         - fortinet.firewall.filesize
         - fortinet.firewall.dtype
         - fortinet.firewall.tlsver
+        - fortinet.firewall.user
+        - fortinet.firewall.srcip
+        - fortinet.firewall.srcintf
+        - fortinet.firewall.policyid
       ignore_missing: true
 on_failure:
   - set:
