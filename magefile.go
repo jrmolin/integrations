@@ -23,6 +23,7 @@ import (
 	"github.com/elastic/integrations/dev/codeowners"
 	"github.com/elastic/integrations/dev/coverage"
 	"github.com/elastic/integrations/dev/testsreporter"
+	"github.com/elastic/integrations/dev/validator"
 )
 
 const (
@@ -48,7 +49,35 @@ func Check() error {
 	mg.Deps(ModTidy)
 	mg.Deps(goTest)
 	mg.Deps(codeowners.Check)
+	mg.Deps(ValidateManifests)
 	return nil
+}
+
+type Summarize mg.Namespace
+
+// SummarizeAll provides a summary of all integrations.
+func (Summarize) All() error {
+	return validator.Summarize("", mg.Verbose())
+}
+
+// Summarize provides a summary of a single integration.
+func (Summarize) Pkg(pkg string) error {
+	return validator.Summarize(pkg, mg.Verbose())
+}
+
+// GenerateSampleLogs generates sample logs for a given integration.
+func GenerateSampleLogs(pkg string) error {
+	return validator.GenerateSampleLogs(pkg)
+}
+
+// ValidateManifests checks that all manifest.yml files are valid.
+func ValidateManifests() error {
+	return validator.Check(false)
+}
+
+// FixManifests fixes all manifest.yml files.
+func FixManifests() error {
+	return validator.Check(true)
 }
 
 func Clean() error {
