@@ -53,16 +53,18 @@ func Check() error {
 	return nil
 }
 
-type Summarize mg.Namespace
-
 // SummarizeAll provides a summary of all integrations.
-func (Summarize) All() error {
-	return validator.Summarize("", mg.Verbose())
-}
+func Summarize() error {
+	path := ""
+	verbose := false
+	if os.Getenv("VERBOSE") == "true" {
+		verbose = true
+	}
+	if os.Getenv("PACKAGE") != "" {
+		path = os.Getenv("PACKAGE")
+	}
 
-// Summarize provides a summary of a single integration.
-func (Summarize) Pkg(pkg string) error {
-	return validator.Summarize(pkg, mg.Verbose())
+	return validator.Summarize(path, verbose)
 }
 
 // GenerateSampleLogs generates sample logs for a given integration.
@@ -73,11 +75,6 @@ func GenerateSampleLogs(pkg string) error {
 // ValidateManifests checks that all manifest.yml files are valid.
 func ValidateManifests() error {
 	return validator.Check(false)
-}
-
-// FixManifests fixes all manifest.yml files.
-func FixManifests() error {
-	return validator.Check(true)
 }
 
 func Clean() error {
